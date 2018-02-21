@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>PoGo Rafaela - Creador de listas de incursión</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Pokemon Go Rafaela</a>
-        </nav>
-        <div class="container-fluid">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Creador de listas</h5>
-                    <form>
-                        <div class="form-group">
-                            <label for="jefeincursion">Jefe de Incursión</label>
-                            <select class="form-control" id="jefeincursion" v-model="jefe_elegido">
-                                <option v-for="(jefe, idx) in jefes" v-bind:value="idx">
-                                    {{ jefe.nivel }} - {{ jefe.nombre }}
-                                </option>
-                            </select>
+    <head>
+        <meta charset="UTF-8">
+        <title>PoGo Rafaela - Creador de listas de incursión</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="app">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Pokemon Go Rafaela</a>
+            </nav>
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Creador de listas</h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="jefeincursion">Jefe de Incursión</label>
+                                <select class="form-control" id="jefeincursion" v-model="jefe_elegido">
+                                    <option v-for="(jefe, idx) in jefes" v-bind:value="idx">
+                                        {{ jefe.nivel }} - {{ jefe.nombre }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="gimnasio">Gimnasio</label>
+                                <select class="form-control" id="gimnasio" v-model="gim_elegido">
+                                    <option v-for="( gim, idx ) in gimnasios" v-bind:value="idx">
+                                        {{ gim.nombre }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="hora">Hora</label>
+                                <input type="time" class="form-control" id="hora" v-model="hora_elegida">
+                            </div>
+                        <div class="form-check mb-2 mr-sm-2">
+                            <input class="form-check-input" type="checkbox" v-model="mostrar_participantes" id="inlineFormCheck">
+                            <label class="form-check-label" for="inlineFormCheck">
+                                Agregar participantes
+                            </label>
                         </div>
-                        <div class="form-group">
-                            <label for="gimnasio">Gimnasio</label>
-                            <select class="form-control" id="gimnasio" v-model="gim_elegido">
-                                <option v-for="( gim, idx ) in gimnasios" v-bind:value="idx">
-                                    {{ gim.nombre }}
-                                </option>
-                            </select>
+                        </form>
+                    </div>
+                    <div class="card-body" v-if="mostrar_participantes">
+                        <h6>Participantes</h6>
+                            <div class="input-group mb-2">
+                                <input type="text" v-model="participante" @keyup.enter="agregarParticipante" class="form-control" placeholder="Participante">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" v-on:click="agregarParticipante" type="button">+</button>
+                                </span>
+                            </div>
+                            <div class="input-group mb-2" v-for="(part, idx) in participantes">
+                                <input type="text" class="form-control" readonly v-bind:value="part">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" v-on:click="quitarParticipante(idx)" type="button">x</button>
+                                </span>
+                            </div>
+                    </div>
+                    <div class="card-body">
+                        <button v-on:click="copiar" class="btn btn-primary mb-3">Copiar</button>
+                        <div v-if="texto_copiado" class="alert alert-success" role="alert">
+                            Ya copiaste la lista, ahora pegala en el grupo de whatsapp
                         </div>
-                        <div class="form-group">
-                            <label for="hora">Hora</label>
-                            <input type="time" class="form-control" id="hora" v-model="hora_elegida">
-                        </div>
-                    </form>
-                </div>
-<div class="card-body">
-    
-            <button v-on:click="copiar" class="btn btn-primary mb-3">Copiar</button>
-            <div v-if="texto_copiado" class="alert alert-success" role="alert">
-                Ya copiaste la lista, ahora pegala en el grupo de whatsapp
-            </div>
-            <textarea class="form-control" id="lista" v-bind:rows="cantFilas">
+                        <textarea class="form-control" id="lista" v-bind:rows="cantFilas">
 *{{jefeMostrar}} - {{gimMostrar}}  - {{hora_elegida}}*
-1⃣ 
-2⃣ 
-3⃣ 
-4⃣ 
-5⃣ 
-6⃣ 
-7⃣ 
-8⃣ 
-9⃣ 
-🔟 {{ (!listaCorta) ? `
-1⃣1⃣ 
-1⃣2⃣ 
-1⃣3⃣ 
-1⃣4⃣ 
-1⃣5⃣ 
-1⃣6⃣ 
-1⃣7⃣ 
-1⃣8⃣ 
-1⃣9⃣ 
-2⃣0⃣`
-: "" }}
+{{textoListado}}
 Hecho con el generador http://pogoraf.000webhostapp.com</textarea></div>
-    </div>
-</div>
+                </div>
+            </div>
         </div>
         <footer>
             <div class="container-fluid">
-                <p class="float-left"><small>V. 0.2</small></p>
+                <p class="float-left"><small>V. 0.3</small></p>
                 <p class="float-right"><small>Desarrollado por Camboris - <a href="https://github.com/camboris/pogoraf">Código</a></small></p>
             </div>
         </footer>
