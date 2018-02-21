@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>PoGo Rafaela - Creado incursiones</title>
+    <title>PoGo Rafaela - Creador de listas de incursión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -46,26 +46,26 @@
             </div>
             <textarea class="form-control" id="lista" v-bind:rows="cantFilas">
 *{{jefeMostrar}} - {{gimMostrar}}  - {{hora_elegida}}*
-1⃣
-2⃣
-3⃣
-4⃣
-5⃣
-6⃣
-7⃣
-8⃣
-9⃣
-🔟{{ (!listaCorta) ? `
-1⃣1⃣
-1⃣2⃣
-1⃣3⃣
-1⃣4⃣
-1⃣5⃣
-1⃣6⃣
-1⃣7⃣
-1⃣8⃣
-1⃣9⃣
-2⃣0⃣` 
+1⃣ 
+2⃣ 
+3⃣ 
+4⃣ 
+5⃣ 
+6⃣ 
+7⃣ 
+8⃣ 
+9⃣ 
+🔟 {{ (!listaCorta) ? `
+1⃣1⃣ 
+1⃣2⃣ 
+1⃣3⃣ 
+1⃣4⃣ 
+1⃣5⃣ 
+1⃣6⃣ 
+1⃣7⃣ 
+1⃣8⃣ 
+1⃣9⃣ 
+2⃣0⃣`
 : "" }}
 Hecho con el generador http://pogoraf.000webhostapp.com</textarea></div>
     </div>
@@ -73,8 +73,8 @@ Hecho con el generador http://pogoraf.000webhostapp.com</textarea></div>
         </div>
         <footer>
             <div class="container-fluid">
-                <p class="float-left"><small>V. 0.1</small></p>
-                <p class="float-right"><small>Desarrollado por Camboris</small></p>
+                <p class="float-left"><small>V. 0.2</small></p>
+                <p class="float-right"><small>Desarrollado por Camboris - <a href="https://github.com/camboris/pogoraf">Código</a></small></p>
             </div>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
