@@ -41,7 +41,10 @@
 <div class="card-body">
     
             <button v-on:click="copiar" class="btn btn-primary mb-3">Copiar</button>
-            <textarea class="form-control" id="lista" rows="21">
+            <div v-if="texto_copiado" class="alert alert-success" role="alert">
+                Ya copiaste la lista, ahora pegala en el grupo de whatsapp
+            </div>
+            <textarea class="form-control" id="lista" v-bind:rows="cantFilas">
 *{{jefeMostrar}} - {{gimMostrar}}  - {{hora_elegida}}*
 1⃣
 2⃣
@@ -52,7 +55,7 @@
 7⃣
 8⃣
 9⃣
-🔟
+🔟{{ (!listaCorta) ? `
 1⃣1⃣
 1⃣2⃣
 1⃣3⃣
@@ -62,10 +65,17 @@
 1⃣7⃣
 1⃣8⃣
 1⃣9⃣
-2⃣0⃣</textarea></div>
+2⃣0⃣` 
+: "" }}
+Hecho con el generador http://pogoraf.000webhostapp.com</textarea></div>
     </div>
-            </div>
+</div>
         </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-</body>
+        <footer>
+            <div class="container-fluid">
+                <p class="float-right"><small>Desarrollado por Camboris</small></p>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    </body>
 </html>
