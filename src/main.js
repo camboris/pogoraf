@@ -13,13 +13,14 @@ const jefes = [
     { nivel: 3, nombre: "Machamp"},
     { nivel: 3, nombre: "Piloswine"},
     { nivel: 2, nombre: "Huevo nivel 2"},
-    { nivel: 2, nombre: "Electabuzz"},
-    { nivel: 2, nombre: "Exeggutor"},
-    { nivel: 2, nombre: "Magnetric"},
-    { nivel: 2, nombre: "Mawile"},
-    { nivel: 2, nombre: "Sableye"},
+    { nivel: 2, nombre: "Sneasel (CP 1067 / 🌫☃ 1334)"},
+    { nivel: 2, nombre: "Mawile (CP 848 / ☁☃1060)"},
+    { nivel: 2, nombre: "Misdreavus (CP 1018 / 🌫 1272)"},
+    { nivel: 2, nombre: "Sableye (CP 745 / 🌫932)"},
+    { nivel: 2, nombre: "Exeggutor (CP 1666 / 🍃☀2083)"},
 ]
 
+//TODO: hacer lista iconos, poner cp aparte, como direccion en los gimansios y concatenar
 
 const gimnasios = [
     { nombre: "Belgrano", direccion: "Bv. Santa Fe 555" },
