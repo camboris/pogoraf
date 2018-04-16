@@ -6,6 +6,7 @@ const gimnasios = [
     { nombre: "Eva Perón", direccion: "Gaboto y Las Heras" },
     { nombre: "Gordita", direccion: "Primera Junta y Víctor Manuel" },
     { nombre: "León", direccion: "Plaza 25 de Mayo" },
+    { nombre: "Mural Los Peque", direccion: "A. Terragni y M. Vecchioli" },
     { nombre: "Pelo Electrizado", direccion: "Bv. Irigoyen y 26 de enero" },
     { nombre: "Pirámide", direccion: "Suipacha y Fanti" },
     { nombre: "Pizzurno", direccion: "Bv. Irigoyen y Fanti" },
